@@ -9,7 +9,7 @@ import (
 
 //往user插入数据
 func UserInsert() {
-	user := models.User{UserName: "lili"}
+	user := models.User{UserName: "lili7"}
 	o := orm.NewOrm()
 	id, err := o.Insert(&user)
 	if err != nil {
@@ -18,6 +18,21 @@ func UserInsert() {
 	}
 	beego.Info("insert success! id = ", id)
 
+}
+
+//往user插入多条数据
+func UserInsertMulti() {
+	users := []models.User{
+		{UserName: "slene"},
+		{UserName: "ajx"},
+		{UserName: "unknown"},
+	}
+	o := orm.NewOrm()
+	ret, err := o.InsertMulti(1, users)
+	if err == nil {
+		beego.Info("ret = ", ret)
+
+	}
 }
 
 //查询user表的数据
@@ -57,15 +72,16 @@ func UserUpdate() {
 func UserDelete() {
 	o := orm.NewOrm()
 
-	user := models.User{UserName: "lili2"}
+	user := models.User{UserName: "lili7"}
 	o.Delete(&user, "UserName")
 
 }
 
 func main() {
+	//UserInsertMulti()
 	//UserInsert()
 	//UserQuery()
 	//UserUpdate()
-	UserDelete()
+	//UserDelete()
 	beego.Run()
 }

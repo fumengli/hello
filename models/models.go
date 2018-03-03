@@ -17,5 +17,5 @@ func init() {
 	orm.RegisterModel(new(User))
 
 	// create table
-	orm.RunSyncdb("default", false, true)
+	//orm.RunSyncdb("default", false, true)
 }
